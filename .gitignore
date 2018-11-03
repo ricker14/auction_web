@@ -1,0 +1,15 @@
+## Directory-based project format:
+.idea/
+.vscode/
+
+# Composer
+vendor/
+conf/composer.lock
+
+public/config.php
+
+log/*
+!log/.empty
+
+sonar-project.properties
+.scannerwork/*
