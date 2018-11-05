@@ -1,0 +1,39 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+<!-- Main content -->
+<div class="ui main container center aligned" id="content">
+
+    <!-- Add Item -->
+    <h1 class="ui icon header">
+        <i class="box icon"></i>
+        <div class="content">
+            {{ name }}
+        </div>
+    </h1>
+
+    <form action="/add/item/post" method="POST" enctype="multipart/form-data">
+        <div id="itemNameDiv">
+            <label for="itemName">Item Name:</label>
+            <input id="itemName" name="itemName">
+        </div>
+        <div id="itemDescDiv">
+            <label for="itemDesc">Item Description:</label>
+            <input id="itemDesc" name="itemDesc">
+        </div>
+        <div id="itemBasePriceDiv">
+            <label for="itemBasePrice">Item Base Price:</label>
+            <input id="itemBasePrice" name="itemBasePrice">
+        </div>
+        <div id="itemImageDiv">
+            <label>Add image:</label>
+            <input type="file" id="itemImage" name="itemImage"/>
+             <button type="submit">Upload</button>
+        <div>
+            <input type="submit" class="ui fluid blue submit button primary" id="addItem" value="Add Item">
+        </div>
+    </form>
+
+</div>
+{% endblock %}

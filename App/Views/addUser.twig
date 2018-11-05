@@ -1,0 +1,31 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <!-- Add User -->
+    <h1 class="ui icon header">
+        <i class="user outline icon"></i>
+        <div class="content">
+            {{ name }}
+        </div>
+    </h1>
+
+    <form action="/add/user" method="post">
+        <div id="userFirstNameDiv">
+            <label for="userFirstName">First Name:
+            <input id="userFirstName" name="userFirstName">
+        </div>    
+        <div id="userLastNameDiv">
+            <label for="userLastName">Last Name:
+            <input id="userLastName" name="userLastName">
+        </div>
+        <div id="userLastEmailDiv">
+            <label for="userLastEmail">Email:
+            <input id="userLastEmail" name="userLastEmail">
+        </div>
+        <div>
+            <input type="submit" class="ui fluid blue submit button primary" id="addUser" value="Add User">
+        </div>
+    </form>
+
+{% endblock %}

@@ -13,10 +13,8 @@ return [
             'password' => 'egkQuUZP2CtpaPha',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'options' => [
-                PDO::MYSQL_ATTR_SSL_CA => '/etc/pki/tls/certs/mysql-ssl-ca-cert.pem'
-            ]
-        ]
+            'prefix'    => ''
+        ],
+        'storagePath' => 'image_uploads/'
     ]
 ];

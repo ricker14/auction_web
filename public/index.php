@@ -15,13 +15,15 @@ $container['twig'] = function () {
     $loader = new \Twig\Loader\FilesystemLoader('../App/Views/');
     $twig = new \Twig\Environment($loader, array(
         'cache' => false,
+        'debug' => true
     ));
+    $twig->addExtension(new Twig_Extension_Debug());
     return $twig;
 };
 
 $container['logger'] = function() {
-    $logger = new \Monolog\Logger('instructionGenerator');
-    $file_handler = new \Monolog\Handler\StreamHandler('../log/app.log');
+    $logger = new \Monolog\Logger('auction');
+    $file_handler = new \Monolog\Handler\StreamHandler('../support/log/app.log');
     $logger->pushHandler($file_handler);
     return $logger;
 };
