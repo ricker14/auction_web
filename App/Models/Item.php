@@ -21,15 +21,15 @@ class Item {
     {
         $itemList = $this->db->table('item')
             ->select(
+                'id',
                 'name',
                 'description',
                 'image',
                 'base_price',
-                'bid_count',
-                'bid_price')
+                'latest_bid_price')
             ->where('status_id', 2)
             ->get();
-error_log('Model Item Array: ' . print_r($itemList, 1));
+
 		if(!$itemList) {
 			return false;
         }

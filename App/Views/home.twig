@@ -12,12 +12,28 @@
 
     <div class="ui four column grid">
     {% for item in itemList %}
+        {% if item.latest_bid_price is null %}
+            {% set price = item.base_price %}
+        {% else %}
+            {% set price = item.latest_bid_price %}
+        {% endif %}
+
         <div class="column item">
-            <img class="ui small image middle aligned" src="{{ item.image }}">
-            <div>{{ item.name }}</div>
-            <div>{{ item.description }}</div>
-            <div>${{ item.price }}</div>
-            <div>Number of bids: {{ item.bid_count }}</div>
+            <form action="/bid/item" method="POST" >
+                <img class="ui small image middle aligned" src="{{ item.image }}">
+                <div><input type="hidden" id="itemId" name="itemId" value="{{ item.id }}"></div>
+                <div class="header">{{ item.name }}</div>
+                <div class="description">{{ item.description }}</div>
+                <div class="price">${{ price }}</div>
+                <div class="bid_count">Number of bids: {{ item.bid_count }}</div>
+                <div class="auction_time">Time left for this auction item: </div>
+                <div class="ui right labeled input">
+                    <label for="bidPrice" class="ui label">$</label>
+                    <input type="text" placeholder="Amount" id="bidPrice" name="bidPrice">
+                    <div class="ui basic label">.00</div>
+                </div>
+                <input type="submit" class="ui fluid blue submit button primary" id="addBid" value="Bid on this item!">
+            </form>
         </div>
     {% endfor %}
     </div>

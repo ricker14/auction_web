@@ -5,9 +5,8 @@ namespace App\Controllers;
 use Illuminate\Database\Capsule\Manager as DB;
 use App\Models\User as user;
 use App\Models\Item as item;
-use App\Models\Bid as bid;
 
-class Auction
+class Administration
 {
     private $app;
     
@@ -16,25 +15,6 @@ class Auction
         $this->app = $app;
         $this->app->db->connection();
         $this->logger = $app->logger;
-    }
-
-    /**
-	 * List Items.
-	 *
-	 * @return array
-	 */
-	public function itemList()
-	{        
-        
-        $itemModel = new item( $this->app );
-        $itemList = $itemModel->itemList();
-        
-        if($itemList === false) {
-            $this->logger->info('There was an error adding the item.');
-        }
-
-        $this->logger->info('Add an item.');
-        return $itemList;
     }
 
     /**
@@ -69,34 +49,34 @@ class Auction
     }
 
     /**
-	 * Add a bid.
+	 * Add a user.
 	 *
 	 * @param  $request
 	 *
 	 * @return object
 	 */
-	public function bidAdd($request)
-	{    
-            
-        $itemId = $request->getParsedBody()['itemId'];
-        $bidPrice = $request->getParsedBody()['bidPrice'];
-        $userId = $request->getParsedBody()['userId'];
+	public function userAdd($request, $itemImage)
+	{        
+        $userFirstName = $request->getParsedBody()['userFirstName'];
+        $userLastName = $request->getParsedBody()['userLastName'];
+        $userEmail = $request->getParsedBody()['userEmail'];
 
-        $bidModel = new Bid( $this->app );
-        $bidAdd = $bidModel->bidAdd($itemId, $bidPrice, $userId);
+        $userModel = new item( $this->app );
+        $userAdd = $userModel->userAdd($itemName, $itemDescription, $itemBasePrice, $itemImage, $request);
         
-        if($bidAdd === false) {
-            $this->logger->info('There was an error adding the bid.');
+        if($userAdd === false) {
+            $this->logger->info('There was an error adding the user.');
             return([
 				'addItemColor' => 'red',
-                'addItemMessage' => 'There was an error adding the bid.',
+                'addItemMessage' => 'There was an error adding the user.',
             ]);
         }
 
-        $this->logger->info('Add a bid.');
+        $this->logger->info('Add a user.');
         return([
             'addItemColor' => 'green', 
-            'addItemMessage' => 'Bid added'
+            'addItemMessage' => 'User added'
         ]);
     }
+
 }
