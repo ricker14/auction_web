@@ -30,10 +30,10 @@ class Administration
         $linkList = $adminModel->linkList();
         
         if($linkList === false) {
-            $this->logger->info('There was an error adding the item.');
+            $this->logger->info('There was an error getting the link list.');
         }
 
-        $this->logger->info('Add an item.');
+        $this->logger->info('Get the link list.');
         return $linkList;
     }
 

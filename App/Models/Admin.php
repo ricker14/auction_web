@@ -20,9 +20,10 @@ class Admin {
     {
         $linkList = $this->db->table('adminLinks')
             ->select(
-                'id',
                 'linkName',
-                'linkURL')
+                'linkURL',
+                'linkIcon')
+                ->where('is_admin', 1)
             ->get();
 
 		if(!$linkList) {

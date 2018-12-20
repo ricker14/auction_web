@@ -19,7 +19,7 @@ $app->group('/admin', function () use ($app) {
 
     // Add a User
     $app->get('/add/user', function ($request, $response) {
-        $this->logger->addInfo('Add User, /add/user, route called');
+        $this->logger->addInfo('Add User, /admin/add/user, route called');
         $template = $this->twig->load('addUser.twig');
         return $template->render(array(
                                 'name' => 'Add User'
@@ -29,7 +29,7 @@ $app->group('/admin', function () use ($app) {
 
     // Add an Item
     $app->get('/add/item', function ($request, $response) {
-        $this->logger->addInfo('Add Item page, /add/item, route called');
+        $this->logger->addInfo('Add Item page, /admin/add/item, route called');
         $template = $this->twig->load('addItem.twig');
 
         return $template->render(array(

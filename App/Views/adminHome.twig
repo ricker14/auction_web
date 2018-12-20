@@ -14,7 +14,10 @@
     {% for link in links %}
         <div class="column item">
             <a href="{{ link.linkURL }}">
-                {{ link.name}}
+                <button class="ui {{ link.linkIcon}} icon button">
+                    <i class="{{ link.linkIcon}} icon"></i>
+                    {{ link.linkName}}
+                </button>
             </a>
         </div>
     {% endfor %}
