@@ -29,12 +29,12 @@ class Administration
         $adminModel = new admin( $this->app );
         $linkList = $adminModel->linkList();
         
-        if($itemList === false) {
+        if($linkList === false) {
             $this->logger->info('There was an error adding the item.');
         }
 
         $this->logger->info('Add an item.');
-        return $itemList;
+        return $linkList;
     }
 
     /**

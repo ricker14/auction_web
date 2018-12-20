@@ -8,8 +8,9 @@ conf/composer.lock
 
 public/config.php
 
-log/*
-!log/.empty
+support/*
+!support/files/.empty
+!support/log/.empty
 
 sonar-project.properties
 .scannerwork/*
