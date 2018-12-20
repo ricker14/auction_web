@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Illuminate\Database\Capsule\Manager as DB;
 use App\Models\User as user;
 use App\Models\Item as item;
+use App\Models\Admin as admin;
 
 class Administration
 {
@@ -15,6 +16,25 @@ class Administration
         $this->app = $app;
         $this->app->db->connection();
         $this->logger = $app->logger;
+    }
+
+    /**
+	 * List Links.
+	 *
+	 * @return array
+	 */
+	public function linkList()
+	{        
+        
+        $adminModel = new admin( $this->app );
+        $linkList = $adminModel->linkList();
+        
+        if($itemList === false) {
+            $this->logger->info('There was an error adding the item.');
+        }
+
+        $this->logger->info('Add an item.');
+        return $itemList;
     }
 
     /**

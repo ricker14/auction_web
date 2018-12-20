@@ -4,6 +4,19 @@ use App\Controllers\Administration as admin;
 
 // Administration
 $app->group('/admin', function () use ($app) {
+
+    // Administration home
+    $app->get('', function ($request, $response) {
+        $this->logger->addInfo('Admin home page, /admin, route called');
+        $admin = new admin( $this );
+        $linkList = $admin->linkList();
+        $template = $this->twig->load('adminHome.twig');
+        return $template->render(array(
+                                'name' => 'Administration',
+                                'links' => $linkList
+                            ));
+    })->setName('adminHome');
+
     // Add a User
     $app->get('/add/user', function ($request, $response) {
         $this->logger->addInfo('Add User, /add/user, route called');
@@ -45,4 +58,5 @@ $app->group('/admin', function () use ($app) {
         $url = $this->router->pathFor('addItemForm');
         return $response->withHeader('Location', $url);
     })->setName('addItemPost');
-}
+
+});

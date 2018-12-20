@@ -1,0 +1,23 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+    <!-- Admininstration -->
+    <h1 class="ui icon header">
+        <i class="legal icon"></i>
+        <div class="content">
+            {{ name }}
+        </div>
+    </h1>
+
+    <div class="ui four column grid">
+    {% for link in links %}
+        <div class="column item">
+            <a href="{{ link.linkURL }}">
+                {{ link.name}}
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

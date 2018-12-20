@@ -39,5 +39,6 @@ $container['db'] = function ($container) {
 
 // Register routes
 require __DIR__ . '/../App/Routes/AuctionRoutes.php';
+require __DIR__ . '/../App/Routes/AdministrationRoutes.php';
 
 $app->run();
