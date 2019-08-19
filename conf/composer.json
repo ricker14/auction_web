@@ -1,6 +1,6 @@
 {
-	"name": "NASBA Instruction Service",
-	"description": "NASBA Instruction Service",
+	"name": "roconnor/auction-service",
+	"description": "Auction Service using SlimPHP version 3",
 	"config": {
 		"vendor-dir": "../vendor"
 	},
