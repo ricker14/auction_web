@@ -10,6 +10,7 @@ public/config.php
 
 log/*
 !log/.empty
+!log/app.log
 
 sonar-project.properties
 .scannerwork/*
